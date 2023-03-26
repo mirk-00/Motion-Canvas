@@ -6,7 +6,8 @@ export default defineConfig({
     project:
       ["./src/project.ts",
       "./src/batch_obj/batch_obj.ts",
-      "./src/plots/plots.ts"
+      "./src/plots/plots.ts",
+      "./src/random_gen/random_gen.ts"
       ]
   })],
 });

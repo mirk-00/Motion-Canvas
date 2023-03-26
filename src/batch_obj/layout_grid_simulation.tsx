@@ -1,7 +1,7 @@
 import {makeScene2D} from '@motion-canvas/2d/lib/scenes';
 import {Circle, Node, Layout, Rect, Txt} from '@motion-canvas/2d/lib/components';
 import {createRef, makeRef, range} from '@motion-canvas/core/lib/utils';
-import {all, waitFor} from '@motion-canvas/core/lib/flow';
+import {all, waitFor, sequence} from '@motion-canvas/core/lib/flow';
 import {createSignal} from '@motion-canvas/core/lib/signals';
 // import { Direction, Origin } from '@motion-canvas/core/lib/types';
 import {linear, easeInOutBounce} from '@motion-canvas/core/lib/tweening';

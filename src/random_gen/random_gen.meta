@@ -1,7 +1,7 @@
 {
   "version": 0,
   "shared": {
-    "background": "rgb(18,18,18)",
+    "background": null,
     "range": [
       0,
       null
@@ -17,7 +17,7 @@
     "resolutionScale": 1
   },
   "rendering": {
-    "fps": 30,
+    "fps": 60,
     "resolutionScale": 2,
     "colorSpace": "srgb",
     "fileType": "image/png",
