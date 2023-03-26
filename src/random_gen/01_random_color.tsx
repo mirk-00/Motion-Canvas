@@ -76,17 +76,17 @@ export default makeScene2D(function* (view) {
     //     )    
     // )
 
-    yield     all(
+    yield*    all(
             ...rects.map( (rect, i) => 
                 rect.fill(colors[rnumbers[i][0]], trans_time).to(colors[rnumbers[i][1]], trans_time)
                 ),
             )   
-    yield     all(
+    yield*     all(
             ...rects.map( (rect, i) => 
                 rect.fill(colors[rnumbers[i][1]], trans_time).to(colors[rnumbers[i][2]], trans_time)
                 )
             )   
-    yield     all(
+    yield*    all(
             ...rects.map( (rect, i) => 
                 rect.fill(colors[rnumbers[i][2]], trans_time).to(colors[rnumbers[i][3]], trans_time)
                 )
