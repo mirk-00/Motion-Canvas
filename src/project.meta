@@ -3,7 +3,7 @@
   "shared": {
     "background": null,
     "range": [
-      0,
+      0.03333233333333333,
       null
     ],
     "size": {
@@ -17,9 +17,17 @@
     "resolutionScale": 1
   },
   "rendering": {
-    "fps": 60,
+    "fps": 30,
     "resolutionScale": 2,
     "colorSpace": "srgb",
+    "exporter": {
+      "name": "image sequence",
+      "options": {
+        "fileType": "image/png",
+        "quality": 100,
+        "groupByScene": false
+      }
+    },
     "fileType": "image/png",
     "quality": 1,
     "groupByScene": false

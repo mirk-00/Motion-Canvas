@@ -4,7 +4,7 @@
     "background": null,
     "range": [
       0,
-      null
+      3.3637705179968695
     ],
     "size": {
       "x": 1920,
@@ -17,7 +17,7 @@
     "resolutionScale": 1
   },
   "rendering": {
-    "fps": 60,
+    "fps": 30,
     "resolutionScale": 2,
     "colorSpace": "srgb",
     "fileType": "image/png",

@@ -6,6 +6,7 @@ import {createSignal} from '@motion-canvas/core/lib/signals';
 import { Origin, Vector2 } from '@motion-canvas/core/lib/types';
 import {useLogger} from '@motion-canvas/core/lib/utils';
 import {default as linspace} from '@stdlib/array-linspace'
+import { easeInOutBack, easeInOutCirc, easeInOutElastic, easeInOutExpo, easeInOutQuad, easeInOutQuart, linear } from '@motion-canvas/core/lib/tweening';
 
 // declare function require(name:string);
 
@@ -24,21 +25,16 @@ export default makeScene2D(function* (view) {
     const pos = xvalues.map<[number, number]>(x => (
         [-270+ x*length(), 1.7*length()*Math.sin(x)]
     ))
-    const index = createSignal(steps-1)
     xvalues = pos.map(tuple => tuple[0])
     let yvalues = pos.map(tuple => tuple[1])
-    
-    const xpos = createSignal(() => pos[Math.round(index())][0])
-    const ypos = createSignal(() => pos[Math.round(index())][1])
 
-    const stdx = createSignal(() => Math.round((xpos() - Math.min(...xvalues)) / (Math.max(...xvalues)-Math.min(...xvalues))*100* 2*Math.PI)/100 )
-    const stdy = createSignal(() => Math.round((ypos() - Math.min(...yvalues)) / (Math.max(...yvalues)-Math.min(...yvalues))*100 -50)/-50)
+    const circpos = createSignal(() => line1().getPointAtPercentage(1-endtime()).position)
+    const stdx = createSignal(() => Math.round((circpos().x - Math.min(...xvalues)) / (Math.max(...xvalues)-Math.min(...xvalues))*1000*2)/1000 )
+    const stdy = createSignal(() => Math.round(-2*((circpos().y - Math.min(...yvalues)) / (Math.max(...yvalues)-Math.min(...yvalues)) -0.5)*1000)/1000 )
     
     const spacing = 100
     const scale = 1.5
     const circles: Circle[] = [];
-
-    logger.info(String(stdx()))
     
 
     view.fill(colors[0])
@@ -91,37 +87,35 @@ export default makeScene2D(function* (view) {
         <Line ref={line1}
             lineWidth={10}
             stroke={colors[3]}
-            // radius={100}
             start={() => 1-endtime()}
             // // endOffset={0}
             // end={() => 1-endtime()}
-            // arrowSize={30}
-            // endArrow
-            points={pos.reverse()}
-        />
+            points={pos.reverse()}        />
         <Circle ref={movingcircle}
             width={30}
             height={30}
             fill={colors[6]}
-            x={() => xpos()}
-            y={() => ypos()}
+            position={() => circpos()
+            }
         />
         <Layout layout
-        x={500}
+        x={600}
         y={-300}
         direction={'column'}
         >
             <Txt
             padding={10}
             fill={'#fff'}
-            fontFamily={'sans-serif'}
-            text={() => 'X value:'+stdx()}
+            fontFamily={'lato'}
+            fontSize={60}
+            text={() => "X value: " + stdx() + 'π'}
             ></Txt>
             <Txt
             padding={10}
             fill={'#fff'}
-            fontFamily={'sans-serif'}
-            text={() => 'Y value:'+stdy()}
+            fontFamily={'lato'}
+            fontSize={60}
+            text={() => 'Y value: '+stdy()}
             ></Txt>
         </Layout>
         
@@ -129,10 +123,7 @@ export default makeScene2D(function* (view) {
     )
 
     yield* all(
-        endtime(1,5),
-        index(0, 5)
+        endtime(1,6),
     )
 
 })
-
-5
