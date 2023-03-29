@@ -2,9 +2,6 @@ import {makeScene2D} from '@motion-canvas/2d/lib/scenes';
 import {Circle, Node, Line, Layout, Rect, Txt} from '@motion-canvas/2d/lib/components';
 import {createRef, makeRef, range, Reference, useRandom} from '@motion-canvas/core/lib/utils';
 import {all, any, chain, loop, waitFor} from '@motion-canvas/core/lib/flow';
-import {createSignal} from '@motion-canvas/core/lib/signals';
-import { Origin, Vector2 } from '@motion-canvas/core/lib/types';
-import {useLogger} from '@motion-canvas/core/lib/utils';
 import { Spline, Knot} from '@motion-canvas/2d/lib/components';
 import { ThreadGenerator } from '@motion-canvas/core/lib/threading';
 import { easeInOutQuad, easeOutQuad, linear } from '@motion-canvas/core/lib/tweening';
@@ -15,8 +12,6 @@ export default makeScene2D(function* (view) {
     const front_flakes: Circle[] = [];
     const back_flakes: Circle[] = [];
     const frontwaves: Spline[] = [];
-    const backwaves: Spline[] = [];
-
     const random = useRandom();
 
 
